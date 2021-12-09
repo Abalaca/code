@@ -11,7 +11,7 @@ am4core.ready(function () {
     // Add data
     chart.data = [
         {
-            "Category": 2006,            
+            "Category": 2006,
             "Economic Participation": 53,
             "Educational Attainment": 77,
             "Health and Survival": 144,
@@ -45,14 +45,14 @@ am4core.ready(function () {
         {
             "Category": 2010,
             "Economic Participation": 46,
-            "Educational Attainment":88,
+            "Educational Attainment": 88,
             "Health and Survival": 133,
             "Political Empowerment": 56,
             "Overall Rank": 61
         },
         {
             "Category": 2011,
-            "Economic Participation":50,
+            "Economic Participation": 50,
             "Educational Attainment": 85,
             "Health and Survival": 133,
             "Political Empowerment": 57,
@@ -64,19 +64,19 @@ am4core.ready(function () {
             "Educational Attainment": 85,
             "Health and Survival": 132,
             "Political Empowerment": 58,
-            "Overall Rank":69
+            "Overall Rank": 69
         },
         {
             "Category": 2013,
             "Economic Participation": 62,
             "Educational Attainment": 81,
             "Health and Survival": 133,
-            "Political Empowerment":59,
-            "Overall Rank":69
+            "Political Empowerment": 59,
+            "Overall Rank": 69
         },
         {
             "Category": 2014,
-            "Economic Participation":76,
+            "Economic Participation": 76,
             "Educational Attainment": 89,
             "Health and Survival": 140,
             "Political Empowerment": 72,
@@ -86,7 +86,7 @@ am4core.ready(function () {
             "Category": 2015,
             "Economic Participation": 81,
             "Educational Attainment": 83,
-            "Health and Survival":145,
+            "Health and Survival": 145,
             "Political Empowerment": 73,
             "Overall Rank": 91
         },
@@ -111,7 +111,7 @@ am4core.ready(function () {
             "Economic Participation": 86,
             "Educational Attainment": 102,
             "Health and Survival": 144,
-            "Political Empowerment":77,
+            "Political Empowerment": 77,
             "Overall Rank": 103
         },
         {
@@ -132,6 +132,16 @@ am4core.ready(function () {
         }
     ];
 
+    chart.data.forEach(function (o) {
+
+        o.Category = "" + o.Category;
+        o["Project Development"] = o["Project Development"] || undefined;
+
+    });
+
+    chart.legend = new am4charts.Legend();
+    // Set input format for the dates
+    chart.dateFormatter.inputDateFormat = "yyyy";
 
 
     // Create axes
@@ -178,6 +188,8 @@ am4core.ready(function () {
             chart.cursor.behavior = "panXY";
             chart.cursor.xAxis = dateAxis;
             chart.cursor.snapToSeries = series;
+
+           
         });
 
     // Create vertical scrollbar and place it before the value axis
@@ -189,12 +201,8 @@ am4core.ready(function () {
     chart.scrollbarX = new am4core.Scrollbar();
     chart.scrollbarX.parent = chart.bottomAxesContainer;
 
-    chart.legend = new am4charts.Legend();
-    // Set input format for the dates
-    chart.dateFormatter.inputDateFormat = "yyyy";
-
     chart.events.on("ready", function () {
         dateAxis.zoom({ start: 0, end: 1 });
     });
     
-}); // end am4core.ready()
+}); 
